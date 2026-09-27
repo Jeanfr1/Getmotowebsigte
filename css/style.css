@@ -480,3 +480,9 @@ section:not(.hero) { position: relative; }
   .hero__stage { position: relative; }
 }
 .feature__bg--rental { background-position: 50% 62%; }
+.ticks li span { line-height: 1.45; }
+.ticks li b { color: #fff; font-weight: 600; }
+.ticks li { align-items: flex-start; }
+.ticks svg { margin-top: 3px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 28px; }
+.chips li { padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; letter-spacing: .03em; color: #cfe0ff; background: rgba(26, 109, 255, .16); border: 1px solid rgba(90, 150, 255, .4); }

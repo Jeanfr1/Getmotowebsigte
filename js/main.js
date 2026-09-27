@@ -313,7 +313,7 @@
   }
 
   // Cards link to the relevant section
-  const cardTargets = ['#services', '#mot', '#services', '#contact'];
+  const cardTargets = ['#services', '#services', '#services', '#contact'];
   $$('.gcard').forEach((c, i) => c.addEventListener('click', () => goTo(cardTargets[i])));
 
   /* Scroll choreography */
@@ -383,7 +383,7 @@
     gsap.from('.step__arrow', { autoAlpha: 0, x: -14, stagger: 0.25, duration: 0.6, scrollTrigger: { trigger: '.steps', start: 'top 80%' } });
 
     /* Active nav link */
-    [['home', hero], ['services', $('#services')], ['mot', $('#mot')], ['rentals', $('#rentals')], ['about', $('#about')], ['contact', $('#contact')]].forEach(([id, el]) => {
+    [['home', hero], ['services', $('#services')], ['keys', $('#keys')], ['dashboards', $('#dashboards')], ['about', $('#about')], ['contact', $('#contact')]].forEach(([id, el]) => {
       ScrollTrigger.create({ trigger: el, start: 'top 45%', end: 'bottom 45%', onToggle: (st) => st.isActive && setActive(id) });
     });
   } else {
