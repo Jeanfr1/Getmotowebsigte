@@ -3,9 +3,10 @@
   'use strict';
 
   // Set to a form backend (Formspree, Web3Forms, etc.) to receive bookings by email.
-  // While empty, the form hands the request to SMS / phone.
+  // Either way, the form opens WhatsApp with the request pre-filled.
   const FORM_ENDPOINT = '';
-  const PHONE = '+447749818987';
+  const WHATSAPP = '447754917319';
+  const waLink = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -58,7 +59,11 @@
     mnav.hidden = !open;
     burger.setAttribute('aria-expanded', String(open));
   });
-  const onScrollNav = () => nav.classList.toggle('is-solid', scrollY > 40);
+  const waFab = $('#waFab');
+  const onScrollNav = () => {
+    nav.classList.toggle('is-solid', scrollY > 40);
+    waFab.classList.toggle('is-on', scrollY > innerHeight * 0.6);
+  };
   addEventListener('scroll', onScrollNav, { passive: true });
   onScrollNav();
 
@@ -423,24 +428,17 @@
       data.message && `Details: ${data.message}`,
     ].filter(Boolean);
     const body = lines.join('\n');
+    const url = waLink(body);
 
+    // Open WhatsApp straight away (inside the submit gesture so it isn't blocked as a popup).
+    const win = window.open(url, '_blank');
+    if (win) win.opener = null;
     if (FORM_ENDPOINT) {
-      try {
-        const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
-        if (!res.ok) throw new Error(res.status);
-        $('#modalTitle').textContent = 'Request sent!';
-        $('#modalText').textContent = "Thanks, we'll call you back to confirm your slot.";
-        $('#modalSms').hidden = true;
-        modal.hidden = false;
-        form.reset();
-        return;
-      } catch (_) { /* fall back to SMS */ }
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) }).catch(() => {});
     }
-    const sep = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) ? '&' : '?';
-    $('#modalSms').href = `sms:${PHONE}${sep}body=${encodeURIComponent(body)}`;
-    $('#modalSms').hidden = false;
+    $('#modalWa').href = url;
     modal.hidden = false;
-    $('#modalSms').focus();
+    $('#modalWa').focus();
   });
   $$('input, select', form).forEach((f) => f.addEventListener('input', () => f.closest('.field').classList.remove('is-bad')));
 })();

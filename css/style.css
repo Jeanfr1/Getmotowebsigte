@@ -486,3 +486,29 @@ section:not(.hero) { position: relative; }
 .ticks svg { margin-top: 3px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 28px; }
 .chips li { padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; letter-spacing: .03em; color: #cfe0ff; background: rgba(26, 109, 255, .16); border: 1px solid rgba(90, 150, 255, .4); }
+
+/* ---------- WhatsApp ---------- */
+.btn--wa { background: linear-gradient(180deg, #2be071, #1faa52); border-color: rgba(120, 255, 170, .45); color: #04160b; box-shadow: 0 10px 30px -8px rgba(37, 211, 102, .6), inset 0 1px 0 rgba(255, 255, 255, .35); }
+.btn--wa:hover { transform: translateY(-2px); box-shadow: 0 16px 38px -8px rgba(37, 211, 102, .85), inset 0 1px 0 rgba(255, 255, 255, .4); }
+.btn--wa svg { font-size: 22px; }
+.wshop__list svg.wa-ic { color: #25d366; }
+.modal__ok--wa { background: radial-gradient(circle at 35% 30%, #4cf08c, #1faa52 70%); box-shadow: 0 0 30px rgba(37, 211, 102, .6); color: #04160b; }
+.wa-fab {
+  position: fixed; right: clamp(16px, 2.4vw, 32px); bottom: clamp(16px, 3vh, 32px); z-index: 60;
+  display: inline-flex; align-items: center; gap: 10px; height: 58px; padding: 0 20px 0 16px; border-radius: 999px;
+  background: linear-gradient(180deg, #2be071, #1faa52); color: #04160b; font-weight: 700; font-size: 15px;
+  box-shadow: 0 14px 34px -8px rgba(37, 211, 102, .7), inset 0 1px 0 rgba(255, 255, 255, .35);
+  opacity: 0; visibility: hidden; transform: translateY(20px) scale(.9);
+  transition: opacity .35s, transform .35s var(--ease), visibility .35s, box-shadow .25s;
+}
+.wa-fab.is-on { opacity: 1; visibility: visible; transform: none; }
+.wa-fab:hover { box-shadow: 0 18px 44px -8px rgba(37, 211, 102, .95), inset 0 1px 0 rgba(255, 255, 255, .4); }
+.wa-fab svg { font-size: 28px; }
+.wa-fab::before { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 0 0 0 rgba(37, 211, 102, .6); animation: waPulse 2.4s ease-out infinite; }
+@keyframes waPulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, .55); } 100% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); } }
+@media (max-width: 767px) {
+  .wa-fab { height: 56px; width: 56px; padding: 0; justify-content: center; }
+  .wa-fab span { display: none; }
+  .feature .btn--wa, .book .btn--wa { white-space: normal; height: auto; min-height: 54px; padding: 12px 18px; text-align: left; font-size: 15.5px; }
+  .book > * { min-width: 0; }
+}
