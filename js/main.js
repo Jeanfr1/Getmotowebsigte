@@ -101,16 +101,21 @@
       if (cursor >= order.length || mySet !== set) return;
       const i = order[cursor++];
       const img = new Image();
-      img.decoding = 'async';
-      img.onload = img.onerror = () => {
+      const done = (ok) => {
         if (mySet !== set) return;
-        loaded[i] = img.naturalWidth > 0;
+        loaded[i] = ok && img.naturalWidth > 0;
         count++;
         bar.style.width = (count / FRAMES) * 100 + '%';
         if (count === FRAMES) loader.classList.add('is-done');
         if (i === 0 || Math.abs(i - Math.round(state.frame)) < 8) render();
         next();
       };
+      // Decode before marking ready: some engines (WebKit) draw an undecoded image as blank.
+      img.onload = () => {
+        if (img.decode) img.decode().then(() => done(true), () => done(true));
+        else done(true);
+      };
+      img.onerror = () => done(false);
       img.src = src(i);
       frames[i] = img;
     };
@@ -127,8 +132,9 @@
   }
 
   function sizeCanvas() {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
     const w = canvas.clientWidth, h = canvas.clientHeight;
+    // Frames are 1600px wide; a bigger backing store only costs memory (Safari caps canvas memory).
+    const dpr = Math.min(devicePixelRatio || 1, 2, 2560 / Math.max(w, 1));
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -150,9 +156,11 @@
     const shift = set === 'desktop' ? lerp(-0.1, 0, c) * cw : 0;
     const ox = (cw - dw) / 2 + shift - mouse.x * 16;
     const oy = clamp((ch - dh) / 2 - mouse.y * 10, Math.min(ch - dh, 0), 0);
-    ctx.fillStyle = '#03060c';
-    ctx.fillRect(0, 0, cw, ch);
-    ctx.drawImage(img, ox, oy, dw, dh);
+    try {
+      ctx.fillStyle = '#03060c';
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.drawImage(img, ox, oy, dw, dh);
+    } catch (_) { canvasFailed(); return; }
     if (ox + dw < cw) { // mirror on the right
       ctx.save(); ctx.translate(ox + dw * 2, 0); ctx.scale(-1, 1);
       ctx.drawImage(img, 0, oy, dw, dh); ctx.restore();
@@ -163,6 +171,26 @@
     }
     geom = { ox, oy, dw, dh };
     placeCallouts();
+    if (!verified) verifyCanvas();
+  }
+
+  // Safety net: if the browser silently draws nothing, drop the canvas and keep the CSS poster.
+  let verified = false;
+  function verifyCanvas() {
+    verified = true;
+    try {
+      const d = ctx.getImageData((canvas.width >> 1) - 100, (canvas.height >> 1) - 100, 200, 200).data;
+      const step = 4 * 37;
+      for (let k = 0; k < d.length; k += step) {
+        if (Math.abs(d[k] - 3) > 6 || Math.abs(d[k + 1] - 6) > 6 || Math.abs(d[k + 2] - 12) > 6) return;
+      }
+      canvasFailed();
+    } catch (_) { /* can't read back: assume it drew */ }
+  }
+  function canvasFailed() {
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+    canvas.style.opacity = '0';
+    canvas.parentElement.style.background = getComputedStyle(canvas).background;
   }
 
   /* Callouts pinned to parts of the exploded bike */
