@@ -76,6 +76,7 @@
     </a>
     <nav class="nav__links" aria-label="Main">
       <a href="#home" class="is-active">Home</a>
+      <a href="#rent" class="nav__rent">Rent</a>
       <div class="nav__drop">
         <a href="#services" aria-haspopup="true">Services <svg><use href="#i-down"/></svg></a>
         <div class="nav__menu">
@@ -104,9 +105,9 @@
   </header>
 
   <div class="mnav" id="mnav" hidden>
-    <a href="#home">Home</a><a href="#services">Services</a><a href="#keys">Smart Keys</a><a href="#dashboards">Dashboards</a><a href="#about">About</a><a href="#contact">Contact</a>
+    <a href="#home">Home</a><a href="#rent" class="mnav__rent">Rent</a><a href="#services">Services</a><a href="#keys">Smart Keys</a><a href="#dashboards">Dashboards</a><a href="#about">About</a><a href="#contact">Contact</a>
     <a class="btn btn--blue" href="#book"><svg><use href="#i-cal"/></svg>Book a Service</a>
-    <a class="mnav__tel" href="https://wa.me/447754917319" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp +44 7754 917319</a>
+    <a class="mnav__tel" href="https://wa.me/447749818987" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp +44 7749 818987</a>
     <a class="mnav__tel" href="tel:+447749818987"><svg><use href="#i-phone"/></svg>07749 818987</a>
   </div>
 
@@ -163,14 +164,14 @@
         </div>
 
         <div class="callouts" id="callouts" aria-hidden="true">
-          <!-- x/y are % of the source frame (1920x1080), side = label direction -->
-          <div class="co" data-x="50.5" data-y="54" data-dx="-150" data-dy="-190"><span>Engine &amp; Oil Change</span></div>
-          <div class="co" data-x="43.6" data-y="46.5" data-dx="-170" data-dy="-40"><span>Suspension</span></div>
-          <div class="co" data-x="45" data-y="73" data-dx="-170" data-dy="90"><span>Transmission</span></div>
-          <div class="co" data-x="64" data-y="61.5" data-dx="-10" data-dy="200"><span>Battery</span></div>
-          <div class="co" data-x="69.5" data-y="34" data-dx="40" data-dy="-190"><span>Steering</span></div>
-          <div class="co" data-x="78.5" data-y="66" data-dx="120" data-dy="170"><span>Brakes</span></div>
-          <div class="co" data-x="89" data-y="60" data-dx="80" data-dy="-150"><span>Tyres</span></div>
+          <!-- x/y are % of the source frame (16:9), dx/dy = label offset in px -->
+          <div class="co" data-x="38" data-y="62" data-dx="60" data-dy="-240"><span>Engine &amp; Oil Change</span></div>
+          <div class="co" data-x="40" data-y="60" data-dx="30" data-dy="200"><span>Transmission</span></div>
+          <div class="co" data-x="70" data-y="63" data-dx="-110" data-dy="150"><span>Battery &amp; Electrics</span></div>
+          <div class="co" data-x="55" data-y="18" data-dx="-150" data-dy="-20"><span>Steering</span></div>
+          <div class="co" data-x="76" data-y="55" data-dx="110" data-dy="-150"><span>Suspension</span></div>
+          <div class="co" data-x="80" data-y="79" data-dx="-170" data-dy="60"><span>Brakes</span></div>
+          <div class="co" data-x="88" data-y="72" data-dx="30" data-dy="-230"><span>Tyres</span></div>
         </div>
 
         <div class="hero__progress" aria-hidden="true"><i id="heroBar"></i></div>
@@ -178,7 +179,48 @@
       </div>
     </section>
 
-    <!-- ============ 2. SERVICES + MOT + RENTALS ============ -->
+    <!-- ============ 2. RENT: scooter fleet ============ -->
+    <section class="rent" id="rent">
+      <div class="wrap">
+        <header class="shead rent__head" data-reveal>
+          <p class="eyebrow eyebrow--line">Scooter rental in Luton</p>
+          <h2>Rent a Honda,<br><em>ride today.</em></h2>
+          <p>Reliable 125cc-class Honda scooters, serviced in our own workshop. Short or long term, for commuting, deliveries or getting around while your bike is with us.</p>
+        </header>
+
+        <ul class="fleet">
+          <li class="rcard" data-reveal data-tilt>
+            <div class="rcard__img"><img src="assets/img/rent-pcx125.webp" alt="Blue Honda PCX 125 scooter in the GetMOTO workshop" loading="lazy" width="720" height="1280"></div>
+            <div class="rcard__body">
+              <span class="rcard__cc">125cc</span>
+              <h3>Honda PCX</h3>
+              <p>The comfortable all-rounder. Smooth, economical and easy in city traffic.</p>
+              <a class="btn btn--blue btn--block" href="https://wa.me/447749818987?text=Hi%20GetMOTO%2C%20I%27d%20like%20to%20rent%20the%20Honda%20PCX%20125cc." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Rent the PCX</a>
+            </div>
+          </li>
+          <li class="rcard" data-reveal data-tilt>
+            <div class="rcard__img"><img src="assets/img/rent-vision110.webp" alt="Blue Honda Vision scooter in the GetMOTO workshop" loading="lazy" width="720" height="1280"></div>
+            <div class="rcard__body">
+              <span class="rcard__cc">110cc</span>
+              <h3>Honda Vision</h3>
+              <p>Light, nimble and simple to ride. A great first scooter for everyday trips.</p>
+              <a class="btn btn--blue btn--block" href="https://wa.me/447749818987?text=Hi%20GetMOTO%2C%20I%27d%20like%20to%20rent%20the%20Honda%20Vision%20110cc." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Rent the Vision</a>
+            </div>
+          </li>
+          <li class="rcard" data-reveal data-tilt>
+            <div class="rcard__img"><img src="assets/img/rent-sh125.webp" alt="Blue Honda SH 125 scooter in the GetMOTO workshop" loading="lazy" width="720" height="1280"></div>
+            <div class="rcard__body">
+              <span class="rcard__cc">125cc</span>
+              <h3>Honda SH</h3>
+              <p>Big wheels, upright riding and premium feel. Stable and confident on any road.</p>
+              <a class="btn btn--blue btn--block" href="https://wa.me/447749818987?text=Hi%20GetMOTO%2C%20I%27d%20like%20to%20rent%20the%20Honda%20SH%20125cc." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Rent the SH</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 3. SERVICES + MOT + RENTALS ============ -->
     <section class="services" id="services">
       <div class="wrap">
         <header class="shead" data-reveal>
@@ -188,7 +230,7 @@
         </header>
 
         <div class="scan" id="scan" data-reveal>
-          <div class="scan__img scan__img--a"><img src="assets/img/bike-assembled.webp" alt="Blue sports motorcycle in the GetMOTO workshop" loading="lazy" width="1920" height="1080"></div>
+          <div class="scan__img scan__img--a"><img src="assets/img/bike-assembled.webp" alt="Blue maxi scooter in the GetMOTO workshop" loading="lazy" width="1920" height="1080"></div>
           <div class="scan__img scan__img--b"><img src="assets/img/bike-exploded.webp" alt="" loading="lazy" width="1920" height="1080"></div>
           <div class="scan__line" aria-hidden="true"></div>
           <div class="scan__hud" aria-hidden="true">
@@ -225,7 +267,7 @@
             <ul class="chips" aria-label="Models">
               <li>Honda PCX</li><li>Yamaha NMAX</li><li>Other keyless models</li>
             </ul>
-            <a class="btn btn--wa" href="https://wa.me/447754917319?text=Hi%20GetMOTO%2C%20I%27d%20like%20a%20quote%20for%20a%20motorcycle%20key%20%2F%20smart%20key." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Get a key quote on WhatsApp</a>
+            <a class="btn btn--wa" href="https://wa.me/447749818987?text=Hi%20GetMOTO%2C%20I%27d%20like%20a%20quote%20for%20a%20motorcycle%20key%20%2F%20smart%20key." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Get a key quote on WhatsApp</a>
           </article>
           <article class="feature" id="dashboards" data-reveal data-tilt>
             <div class="feature__bg feature__bg--rental" style="background-image:url('assets/img/bike-rental.webp')"></div>
@@ -243,13 +285,13 @@
             <ul class="chips" aria-label="Brands">
               <li>Honda</li><li>Yamaha</li><li>Suzuki</li><li>Kawasaki</li><li>And others</li>
             </ul>
-            <a class="btn btn--wa" href="https://wa.me/447754917319?text=Hi%20GetMOTO%2C%20I%27d%20like%20a%20quote%20for%20an%20instrument%20panel%20%2F%20dashboard%20repair." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Get a dashboard quote on WhatsApp</a>
+            <a class="btn btn--wa" href="https://wa.me/447749818987?text=Hi%20GetMOTO%2C%20I%27d%20like%20a%20quote%20for%20an%20instrument%20panel%20%2F%20dashboard%20repair." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Get a dashboard quote on WhatsApp</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ 3. ABOUT: why riders choose + process ============ -->
+    <!-- ============ 4. ABOUT: why riders choose + process ============ -->
     <section class="about" id="about">
       <div class="about__photo" aria-hidden="true">
         <img src="assets/img/mechanic.webp" alt="" loading="lazy" width="2200" height="1215">
@@ -290,7 +332,43 @@
       </div>
     </section>
 
-    <!-- ============ 4. CONTACT: booking form + workshop + map ============ -->
+    <!-- ============ 5. TESTIMONIALS: Google reviews, scrolling columns ============ -->
+    <section class="reviews" id="reviews">
+      <div class="wrap reviews__inner">
+        <header class="reviews__head" data-reveal>
+          <p class="eyebrow eyebrow--line">Testimonials</p>
+          <h2>What riders<br>say about <em>us.</em></h2>
+          <div class="grating">
+            <span class="grating__g" aria-hidden="true">G</span>
+            <div>
+              <div class="grating__row"><b>5.0</b><span class="stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div>
+              <small>128 reviews on Google</small>
+            </div>
+          </div>
+          <a class="btn btn--ghost" href="https://maps.google.com/?cid=13043082335289810702" target="_blank" rel="noopener">Read all reviews<svg class="chev"><use href="#i-chev"/></svg></a>
+        </header>
+
+        <div class="tcols" aria-label="Customer reviews from Google">
+          <ul class="tcol" style="--dur:38s">
+            <li class="tcard"><div class="tcard__top"><span class="tcard__av">NH</span><div><b>nutrin herinza</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>I am very happy with the experience i had today. Regularly I vist his garrage for oil change and servicing of my motorcycle. The way he treats me like a Brother is really appreciable. [...] this Bro satisfies the customer with quick and reliable service [...] He sells all kind of Branded accessories less than the Online prices.</p></li>
+            <li class="tcard"><div class="tcard__top"><span class="tcard__av">SM</span><div><b>Shafi Mia</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>Nice garage, the done the service of my scooter and the make nice wash, definitely I recommend for all bikers</p></li>
+            <li class="tcard tcard--short"><div class="tcard__top"><span class="tcard__av">G</span><div><b>Google review</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>Nice staff good work</p></li>
+          </ul>
+          <ul class="tcol" style="--dur:30s">
+            <li class="tcard"><div class="tcard__top"><span class="tcard__av">KB</span><div><b>Kheireddine Bennehar</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>Great Mechanic! Professional work! Clear communication! Great prices! Fast job ! I would definitely recommend it</p></li>
+            <li class="tcard tcard--short"><div class="tcard__top"><span class="tcard__av">G</span><div><b>Google review</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>They’re very friendly and helpful also give services in reasonable price.</p></li>
+            <li class="tcard"><div class="tcard__top"><span class="tcard__av">MC</span><div><b>Marcello Contestabile</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>Very happy with my experience today. They are competent and very friendly. Very good value too.</p></li>
+          </ul>
+          <ul class="tcol" style="--dur:34s">
+            <li class="tcard"><div class="tcard__top"><span class="tcard__av">AL</span><div><b>Abdou Lahcene</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>Great place if you need a quick service, good price and good job</p></li>
+            <li class="tcard tcard--short"><div class="tcard__top"><span class="tcard__av">G</span><div><b>Google review</b><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div></div><p>Very good service cheaper price</p></li>
+            
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. CONTACT: booking form + workshop + map ============ -->
     <section class="contact" id="contact">
       <div class="wrap">
         <header class="shead" data-reveal>
@@ -336,7 +414,7 @@
               <a class="btn btn--blue btn--block" href="tel:+447749818987">Get in Touch<svg class="chev"><use href="#i-chev"/></svg></a>
               <ul class="wshop__list">
                 <li><svg><use href="#i-phone"/></svg><div><a href="tel:+447749818987"><b>07749 818987</b></a><small>Mon to Sat, 9:00 AM to 7:00 PM</small></div></li>
-                <li><svg class="wa-ic"><use href="#i-wa"/></svg><div><a href="https://wa.me/447754917319" target="_blank" rel="noopener"><b>+44 7754 917319</b></a><small>WhatsApp: quotes &amp; bookings</small></div></li>
+                <li><svg class="wa-ic"><use href="#i-wa"/></svg><div><a href="https://wa.me/447749818987" target="_blank" rel="noopener"><b>+44 7749 818987</b></a><small>WhatsApp: quotes &amp; bookings</small></div></li>
                 <li><svg><use href="#i-clock"/></svg><div><b>Sunday</b><small>Closed</small></div></li>
                 <li><svg><use href="#i-insta"/></svg><div><a href="https://www.instagram.com/getmotoltd/" target="_blank" rel="noopener"><b>@getmotoltd</b></a><small>Follow us on Instagram</small></div></li>
               </ul>
@@ -382,8 +460,8 @@
   <footer class="foot">
     <div class="wrap foot__inner">
       <img src="assets/img/logo.webp" alt="GetMOTO Rent &amp; Repair" width="120" height="80" loading="lazy">
-      <nav aria-label="Footer"><a href="#services">Services</a><a href="#keys">Smart Keys</a><a href="#dashboards">Dashboards</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-      <p>© <span id="yr">2026</span> GetMOTO · Selbourne Road, Luton LU4 8NP · <a href="tel:+447749818987">07749 818987</a> · <a href="https://wa.me/447754917319" target="_blank" rel="noopener">WhatsApp +44 7754 917319</a></p>
+      <nav aria-label="Footer"><a href="#rent">Rent</a><a href="#services">Services</a><a href="#keys">Smart Keys</a><a href="#dashboards">Dashboards</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+      <p>© <span id="yr">2026</span> GetMOTO · Selbourne Road, Luton LU4 8NP · <a href="tel:+447749818987">07749 818987</a> · <a href="https://wa.me/447749818987" target="_blank" rel="noopener">WhatsApp +44 7749 818987</a></p>
     </div>
   </footer>
 
@@ -395,13 +473,13 @@
       <h3 id="modalTitle">Almost there!</h3>
       <p id="modalText">We've opened WhatsApp with your booking details. Just press send and our team will confirm your slot.</p>
       <div class="modal__ctas">
-        <a class="btn btn--wa" id="modalWa" href="https://wa.me/447754917319" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Open WhatsApp</a>
+        <a class="btn btn--wa" id="modalWa" href="https://wa.me/447749818987" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Open WhatsApp</a>
         <a class="btn btn--ghost" href="tel:+447749818987"><svg><use href="#i-phone"/></svg>Call 07749 818987</a>
       </div>
     </div>
   </div>
 
-  <a class="wa-fab" id="waFab" href="https://wa.me/447754917319?text=Hi%20GetMOTO%2C%20" target="_blank" rel="noopener" aria-label="Chat with GetMOTO on WhatsApp"><svg><use href="#i-wa"/></svg><span>Chat on WhatsApp</span></a>
+  <a class="wa-fab" id="waFab" href="https://wa.me/447749818987?text=Hi%20GetMOTO%2C%20" target="_blank" rel="noopener" aria-label="Chat with GetMOTO on WhatsApp"><svg><use href="#i-wa"/></svg><span>Chat on WhatsApp</span></a>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>

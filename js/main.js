@@ -5,7 +5,7 @@
   // Set to a form backend (Formspree, Web3Forms, etc.) to receive bookings by email.
   // Either way, the form opens WhatsApp with the request pre-filled.
   const FORM_ENDPOINT = '';
-  const WHATSAPP = '447754917319';
+  const WHATSAPP = '447749818987';
   const waLink = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
   const $ = (s, c = document) => c.querySelector(s);
@@ -74,7 +74,7 @@
   const hero = $('#home');
   const canvas = $('#heroCanvas');
   const ctx = canvas.getContext('2d');
-  const FRAMES = 120;
+  const FRAMES = 150;
   const isMobile = () => innerWidth < 768;
   let set = isMobile() ? 'mobile' : 'desktop';
   let frames = [];
@@ -201,8 +201,8 @@
   /* Callouts pinned to parts of the exploded bike */
   const callouts = $$('.co');
   const MOBILE_POS = { // % positions on the 9:16 frame
-    'Engine & Oil Change': [56, 45, -40, -150],
-    'Suspension': [30, 47, -10, -120],
+    'Transmission': [18, 60, 40, -170],
+    'Steering': [66, 18, -60, 120],
   };
   callouts.forEach((co) => {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -308,11 +308,13 @@
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
         el.style.transform = `perspective(1100px) rotateX(${y * -4}deg) rotateY(${x * 5}deg)`;
-        el.querySelector('.feature__bg').style.translate = `${x * -18}px ${y * -12}px`;
+        const bg = el.querySelector('.feature__bg, .rcard__img img');
+        if (bg) bg.style.translate = `${x * -18}px ${y * -12}px`;
       });
       el.addEventListener('pointerleave', () => {
         el.style.transform = '';
-        el.querySelector('.feature__bg').style.translate = '';
+        const bg = el.querySelector('.feature__bg, .rcard__img img');
+        if (bg) bg.style.translate = '';
       });
     });
   }
@@ -388,7 +390,7 @@
     gsap.from('.step__arrow', { autoAlpha: 0, x: -14, stagger: 0.25, duration: 0.6, scrollTrigger: { trigger: '.steps', start: 'top 80%' } });
 
     /* Active nav link */
-    [['home', hero], ['services', $('#services')], ['keys', $('#keys')], ['dashboards', $('#dashboards')], ['about', $('#about')], ['contact', $('#contact')]].forEach(([id, el]) => {
+    [['home', hero], ['rent', $('#rent')], ['services', $('#services')], ['keys', $('#keys')], ['dashboards', $('#dashboards')], ['about', $('#about')], ['reviews', $('#reviews')], ['contact', $('#contact')]].forEach(([id, el]) => {
       ScrollTrigger.create({ trigger: el, start: 'top 45%', end: 'bottom 45%', onToggle: (st) => st.isActive && setActive(id) });
     });
   } else {
@@ -396,6 +398,16 @@
     $$('[data-reveal]').forEach((el) => { el.style.opacity = 1; el.style.transform = 'none'; });
     $('#scan').style.setProperty('--scan', '50%');
   }
+
+  /* ---------------- Testimonials: endless upward columns ---------------- */
+  $$('.tcol').forEach((col) => {
+    const items = [...col.children];
+    // Repeat the set until one copy is taller than the viewport window, then double it for a seamless -50% loop.
+    let guard = 0;
+    while (col.scrollHeight < 900 && guard++ < 6) items.forEach((li) => col.appendChild(li.cloneNode(true)));
+    [...col.children].forEach((li) => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); col.appendChild(c); });
+    col.classList.add('is-running');
+  });
 
   /* ---------------- Booking form ---------------- */
   const form = $('#book');
