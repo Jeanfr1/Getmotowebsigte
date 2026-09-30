@@ -135,7 +135,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .hero { position: relative; height: 420vh; }
 .hero__stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .hero__media { position: absolute; inset: 0; will-change: transform; }
-.hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; background: #03060c url("../assets/frames/desktop/f001.webp") center / cover no-repeat; }
+.hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; background: #03060c url("../assets/frames/scooter/desktop/f001.webp") center / cover no-repeat; }
 .hero__glow {
   position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
   background: radial-gradient(420px circle at var(--mx, 60%) var(--my, 40%), rgba(40, 110, 255, .22), transparent 70%);
@@ -429,7 +429,7 @@ section:not(.hero) { position: relative; }
   .nav__cta { --h: 44px; padding: 0 14px; font-size: 14px; gap: 8px; }
   .nav__cta svg { font-size: 17px; }
   .hero { height: 380vh; }
-  .hero__canvas { background-image: url("../assets/frames/mobile/f001.webp"); background-position: center; }
+  .hero__canvas { background-image: url("../assets/frames/scooter/mobile/f001.webp"); background-position: center; }
   .hero__shade { background: linear-gradient(180deg, rgba(3, 6, 12, .9) 0%, rgba(3, 6, 12, .55) 38%, rgba(3, 6, 12, .05) 55%, rgba(3, 6, 12, .75) 75%, rgba(3, 6, 12, .95) 100%); }
   .hero__intro { max-width: none; top: calc(var(--nav-h) + 24px); }
   .hero__eyebrow { font-size: 10.5px; letter-spacing: .26em; margin-bottom: 14px; }

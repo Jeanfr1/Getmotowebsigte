@@ -83,7 +83,7 @@
   const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
   let geom = null; // last draw transform, reused by callouts
 
-  const src = (i) => `assets/frames/${set}/f${String(i + 1).padStart(3, '0')}.webp`;
+  const src = (i) => `assets/frames/scooter/${set}/f${String(i + 1).padStart(3, '0')}.webp`;
 
   function loadSet() {
     frames = new Array(FRAMES);
