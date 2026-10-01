@@ -3,5 +3,5 @@
 
 # source media (frames/webp are generated from these)
 *.mp4
-ChatGPT Image*.png
+/*.png
 .playwright-mcp/
